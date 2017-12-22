@@ -16,7 +16,7 @@ int main()
 	while (isalpha(*iter)) {
 		first_liter++; iter++;
 	}
-	while (!isalpha(*iter)) {
+	while (isdigit(*iter)) {
 		numbers++;
 		if (++iter == enter.end())
 			break;
@@ -31,5 +31,6 @@ int main()
 	else if ((first_liter == 0) && (numbers == 4) && (last_liter == 2) && (len == 6))
 		cout << "4";
 	else cout << "0";
+	system("pause");
 	return 0;
 }
