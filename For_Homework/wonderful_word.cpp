@@ -15,27 +15,14 @@ int main() {
 	string enter;
 	cin >> enter;
 
-	unsigned short glass = 0, soglas = 0, chars = 0;
-	auto fiter = enter.begin(), siter = enter.begin();
-	auto gfiter = enter.begin(), gsiter = enter.begin();
-	for (auto iter = enter.begin(); iter != enter.end(); iter++) {
-		if (glas.find(*iter) != glas.end()) {
-			++glass;
-			if (fiter == iter - 1 && glass == 2) {
+	unsigned short  chars = 0;
+
+	for (int i = 0; i < enter.size() - 1; i++) {
+		if (isalpha(enter[i])) {
+			if ((glas.find(enter[i]) != glas.end())) && ((glas.find(enter[i + 1]) != glas.end()))
 				chars++;
-				glass = 0;
-			}
-			fiter = iter;
-			glass = 0;
-		}
-		else{
-			++soglas;
-			if (gfiter == iter - 1 && soglas == 2) {
+			else (glas.find(enter[i]) == glas.end() && glas.find(enter[i + 1]) == glas.end())
 				chars++;
-				soglas = 0;
-			}
-			gfiter = iter;
-			soglas = 0;
 		}
 	}
 	cout << chars << endl;

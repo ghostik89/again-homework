@@ -15,11 +15,18 @@ void cleaner(string& str) {
 }
 
 int main() {
-	string true_number, foo_str;
+	string true_number, foo_str,true_code, true_num;
 	bool arr[3] = { false };
 	cin >> true_number;
 	cleaner(true_number);
-	//may be test has bags?
+	if (true_number.size() == 10) {
+		copy(true_number.begin(), true_number.begin() + 3,true_num.begin());
+		copy(true_number.begin()+3, true_number.end(), true_code.begin());
+	}
+	if (true_number.size() == 7) {
+		true_code = "495";
+		true_num = true_number;
+	}
 	for (int i = 1; i <= 3; i++) {
 		cin >> foo_str;
 		cleaner(foo_str);
