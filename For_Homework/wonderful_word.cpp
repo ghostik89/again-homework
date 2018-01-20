@@ -17,11 +17,13 @@ int main() {
 
 	unsigned short  chars = 0;
 
-	for (int i = 0; i < enter.size() - 1; i++) {
+	for (int i = 0; i < enter.size() - 2; i++) {
 		if (isalpha(enter[i])) {
-			if ((glas.find(enter[i]) != glas.end())) && ((glas.find(enter[i + 1]) != glas.end()))
+			if (glas.find(enter[i]) != glas.end() && glas.find(enter[i + 1]) != glas.end() 
+				&& glas.find(enter[i + 2]) != glas.end())
 				chars++;
-			else (glas.find(enter[i]) == glas.end() && glas.find(enter[i + 1]) == glas.end())
+			else if (glas.find(enter[i]) == glas.end() && glas.find(enter[i + 1]) == glas.end() 
+				&& glas.find(enter[i + 2]) == glas.end())
 				chars++;
 		}
 	}

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//function for cleaning strings
+//clean number
 void cleaner(string& str) {
 	if (str[0] == '8')
 		str.erase(str.begin());
@@ -15,13 +15,16 @@ void cleaner(string& str) {
 }
 
 int main() {
-	string true_number, foo_str,true_code, true_num;
+	string true_number, foo_str, foo_code,foo_num;
+	string true_num, true_code;
+	//arr for check
 	bool arr[3] = { false };
 	cin >> true_number;
 	cleaner(true_number);
+	//copy for compare
 	if (true_number.size() == 10) {
-		copy(true_number.begin(), true_number.begin() + 3,true_num.begin());
-		copy(true_number.begin()+3, true_number.end(), true_code.begin());
+		true_code.append(true_number, 0,3);
+		true_num.append(true_number, 3,7);
 	}
 	if (true_number.size() == 7) {
 		true_code = "495";
@@ -30,12 +33,29 @@ int main() {
 	for (int i = 1; i <= 3; i++) {
 		cin >> foo_str;
 		cleaner(foo_str);
-		if (foo_str == true_number)
+		//copy to num and code
+		if (foo_str.size() == 10) {
+			foo_code.append(foo_str, 0,3);
+			foo_num.append(foo_str, 3,7);
+		}
+		if (foo_str.size() == 7) {
+			foo_code = "495";
+			foo_num = foo_str;
+		}
+		//chek number
+		if (true_code == foo_code && true_num == foo_num) {
 			arr[i - 1] = true;
+			foo_str.clear();
+			foo_num.clear();
+			foo_code.clear();
+		}
+
+
 	}
+	//compelete
 	for (int i = 0; i < 3; i++)
 		if (arr[i]) cout << "YES" << "\n";
 		else cout << "NO" << "\n";
-	system("pause");
+		system("pause");
 	return 0;
 }
